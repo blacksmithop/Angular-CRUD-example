@@ -1,2 +1,4 @@
 
-<router-outlet></router-outlet>
+<router-outlet>
+    <app-sidenav *ngIf="!router.url.includes('auth')"></app-sidenav>
+</router-outlet>

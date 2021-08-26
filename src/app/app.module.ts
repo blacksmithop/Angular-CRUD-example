@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { ApiService } from './api.service';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    DashboardComponent
+    AuthComponent,
+    DashboardComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,

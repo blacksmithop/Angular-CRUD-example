@@ -1,6 +1,5 @@
 $(document).ready(function() {
     $('.toggle-signup').click(function() {
-      console.log(1);
       $('.signup-form').removeClass('visually-hidden');
       $('.login-form').addClass('visually-hidden');
     });
