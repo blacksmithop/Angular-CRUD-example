@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
 import { AuthstateService } from '../authstate.service'
@@ -15,7 +15,7 @@ export class AuthComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]]
   })
-  
+
   registerForm = this.form.group({
     name: ['', [Validators.required, Validators.minLength(4)]],
     email: ['', [Validators.required, Validators.email]],
@@ -23,10 +23,9 @@ export class AuthComponent implements OnInit {
   })
 
   constructor(private form: FormBuilder,
-     private api: ApiService, 
-     private router:Router,
-     private authService : AuthstateService)
-      {
+    private api: ApiService,
+    private router: Router,
+    private authService: AuthstateService) {
     const node = document.createElement('script');
     node.src = '../../assets/js/form.js';
     node.type = 'text/javascript';
@@ -46,10 +45,9 @@ export class AuthComponent implements OnInit {
     }
     this.api.login(data).subscribe(
       resp => {
-        console.log("Here");
-        //this.router.navigateByUrl("/dashboard")
+        this.router.navigateByUrl("/")
         this.token = resp;
-        localStorage.setItem("token", "Contacts " + this.token.accessToken.value)
+        localStorage.setItem("token", this.token.accessToken.value)
         this.authService.login();
       },
       error => {

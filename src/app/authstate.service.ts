@@ -10,26 +10,27 @@ export class AuthstateService {
 
   get isLoggedIn() {
     // return this.loggedIn.asObservable();
-    if(localStorage.getItem('token'))
+    if (localStorage.getItem('token'))
       this.loggedIn.next(true);
     else
-        this.loggedIn.next(false);
+
+      this.loggedIn.next(false);
     return this.loggedIn.asObservable();
   }
   constructor(private router: Router) { }
 
-  isAuthorized(){
+  isAuthorized() {
     return (localStorage.getItem("token") != null)
   }
-  
-  login(){
-    if(localStorage.getItem('token')){
-      this.router.navigate(['dashboard']);
+
+  login() {
+    if (localStorage.getItem('token')) {
+      this.router.navigate(['']);
     }
   }
-  
+  /* logout user
   logout() {
     localStorage.removeItem('token')
     this.router.navigate(['']);
-  }
+  }*/
 }

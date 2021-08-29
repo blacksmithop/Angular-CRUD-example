@@ -8,8 +8,8 @@ import { map, take } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class IsauthGuard implements CanActivate {
-  constructor(private authService: AuthstateService, private router: Router){}
-  
+  constructor(private authService: AuthstateService, private router: Router) { }
+
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     return this.authService.isLoggedIn.pipe(
       take(1),
@@ -22,5 +22,5 @@ export class IsauthGuard implements CanActivate {
       })
     );
   }
-  
+
 }

@@ -1,0 +1,19 @@
+.container-fluid {
+    margin-left: 160px;
+}
+
+#product-add{
+    width: 25%;
+}
+
+#product-update{
+    width: 50%;
+}
+.input-group + .input-group {
+    margin-top: 10px;
+}
+
+.btn-group + button {
+    margin-left: 10px;
+}
+

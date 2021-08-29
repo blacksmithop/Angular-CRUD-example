@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { interval } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 const BASE_URL = 'http://localhost:8080';
 
@@ -10,28 +8,9 @@ const BASE_URL = 'http://localhost:8080';
 })
 export class ApiService {
 
-  private source = interval(3000);
 
-  constructor(private http: HttpClient) { 
-    /*
-    this.source.subscribe(() => {
-      this.http
-        .get('http://localhost:8080/status', { observe: 'response' })
-        .pipe(first())
-        .subscribe(
-          resp => {
-            if (resp.status === 200) {
-              console.log(true);
-            } else {
-              console.log(false);
-            }
-          },
-          err => console.log(err.status)
-        );
-    });*/
+  constructor(private http: HttpClient) {
   }
-
-
 
   register(data: any) {
     return this.http.post(`${BASE_URL}/users`, data)
@@ -42,9 +21,7 @@ export class ApiService {
   }
 
   users(token: any) {
-    let httpHeaders = new HttpHeaders()
-    httpHeaders.set("Authorization", `Contacts ${token}`)
-
-    return this.http.get(`${BASE_URL}/users`, { headers: httpHeaders })
+    const headers = { 'Authorization': `Contacts ${localStorage.getItem('token')}` };
+    return this.http.get(`${BASE_URL}/users`, { headers })
   }
 }
