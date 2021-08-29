@@ -88,11 +88,9 @@ export class ProductComponent implements OnInit {
   }
 
   deleteItem() {
-    console.log('here!!');
 
     this.api.delete(this.deleteSelection).subscribe(
       resp => {
-        console.log('here');
         this.populateList()
       },
       error => {
